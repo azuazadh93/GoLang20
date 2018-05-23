@@ -1,0 +1,54 @@
+DAY8:
+
+READ WRITE:
+package main
+import (
+   "log"
+   "os"
+)
+func main() {
+   file,err :=os.OpenFile("test.txt",os.O_WRONLY,0666)
+  if err!=nil {
+          log.Println("error: write permission denied")
+     } else {
+		log.Println("ready to read")
+	 }
+	 file.Close()
+    
+file1,err1 :=os.OpenFile("test2.txt",os.O_RDONLY,0666)
+  if err1!=nil {
+     log.Println("Error")
+  } else {
+	log.Println("ready to write")
+  }
+    file1.Close()
+   
+
+   }
+
+==================================================================================
+
+FILE INFO:
+
+package main
+import (
+   "log"
+   "os"
+)
+
+func main() {
+    fileInfo,err:=os.Stat("test.txt")
+    if err !=nil {
+         log.Fatal("File does not exist")
+    }
+  
+   log.Println("File name:",fileInfo.Name())
+   log.Println("Size:",fileInfo.Size())
+   log.Println("Permission:",fileInfo.Mode())
+   log.Println("lastmodified:",fileInfo.ModTime())
+   log.Println("IdDirectory:",fileInfo.IsDir())
+   log.Println("Systeminfo:",fileInfo.Sys())
+
+
+}
+
